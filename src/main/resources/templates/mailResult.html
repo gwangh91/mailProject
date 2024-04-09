@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Mail Result</title>
+	<meta charset="UTF-8">
+	<title>Mail Result</title>
 	<link rel="stylesheet" type="text/css" href="/css/mailFormStyles.css">
 </head>
+
 <body>
 	<div class="container">
 		<div class="message">
@@ -12,12 +14,13 @@
 			<button onclick="goToMailFormPage()">メール送信ページへ</button>
 		</div>
 	</div>
-	
+
 	<script>
-	 	// mailFormページに画面転移
-	    function goToMailFormPage() {
-	    	window.location.href = "/mailForm";
-	    }
+		// mailFormページに画面転移
+		function goToMailFormPage() {
+			window.location.href = "/mailForm";
+		}
 	</script>
 </body>
+
 </html>

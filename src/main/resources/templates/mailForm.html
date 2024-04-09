@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Mail Form</title>
+	<meta charset="UTF-8">
+	<title>Mail Form</title>
 	<link rel="stylesheet" type="text/css" href="/css/mailFormStyles.css">
 	<script src="/js/mailFormScript.js" defer></script>
 </head>
+
 <body>
-    <form id="emailForm" action="/confirmMailForm" method="post">
+	<form id="emailForm" action="/confirmMailForm" method="post">
 		<div class="form-group">
 			<label for="to">To</label>
 			<input type="email" id="to" name="to" maxlength="255"><br>
 		</div>
-        <div class="form-group">
+		<div class="form-group">
 			<label for="subject">件名</label>
-	        <input type="text" id="subject" name="subject" maxlength="255"><br>
+			<input type="text" id="subject" name="subject" maxlength="255"><br>
 		</div>
-        <label for="body">本文</label><br>
-        <textarea id="body" name="body"></textarea><br>
-        <input type="submit" value="送信">
-    </form>
+		<label for="body">本文</label><br>
+		<textarea id="body" name="body"></textarea><br>
+		<input type="submit" value="送信">
+	</form>
 </body>
+
 </html>

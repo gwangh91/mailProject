@@ -11,14 +11,14 @@ public class SentMail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "recipient_email")
 	private String recipientEmail; // 受取人メール
-	
+
 	private String subject;
-	
+
 	private String body;
-	
+
 	@Column(name = "sent_at")
 	private LocalDateTime sentAt;
 
@@ -61,5 +61,5 @@ public class SentMail {
 	public void setSentAt(LocalDateTime sentAt) {
 		this.sentAt = sentAt;
 	}
-	
+
 }
