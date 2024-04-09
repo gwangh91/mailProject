@@ -13,7 +13,7 @@ public class MailController {
 	@Autowired
 	private MailService mailService;
 	
-	@GetMapping("/")
+	@GetMapping("/mailForm")
 	public String showMailForm() {
 		return "mailForm";
 	}
