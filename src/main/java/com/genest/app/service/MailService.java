@@ -4,6 +4,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import com.genest.app.dto.MailDTO;
 import com.genest.app.entity.SentMail;
 import com.genest.app.repository.SentMailRepository;
 
@@ -21,22 +22,22 @@ public class MailService {
 		this.sentMailRepository = sentMailRepository;
 	}
 
-	public void sendEmail(String to, String subject, String body) {
+	public void sendEmail(MailDTO mailDTO) {
 		MimeMessage message = javaMailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
 
 		try {
 			// メール転送
-			helper.setTo(to);
-			helper.setSubject(subject);
-			helper.setText(body, true);
+			helper.setTo(mailDTO.getTo());
+			helper.setSubject(mailDTO.getSubject());
+			helper.setText(mailDTO.getBody(), true);
 			javaMailSender.send(message);
 
 			// メール転送後、DBに保存
 			SentMail sentMail = new SentMail();
-			sentMail.setRecipientEmail(to);
-			sentMail.setSubject(subject);
-			sentMail.setBody(body);
+			sentMail.setRecipientEmail(mailDTO.getTo());
+			sentMail.setSubject(mailDTO.getSubject());
+			sentMail.setBody(mailDTO.getBody());
 			sentMailRepository.save(sentMail);
 
 		} catch (MessagingException e) {

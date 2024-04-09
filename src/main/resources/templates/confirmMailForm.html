@@ -8,17 +8,17 @@
 </head>
 
 <body>
-	<form method="post" action="/sendMail">
+	<form method="post" action="/sendMail" th:object="${mailDTO}">
 		<div class="form-group">
 			<label for="to">To</label>
-			<input type="email" id="to" name="to" readonly th:value="${to}" required />
+			<input type="email" id="to" name="to" readonly th:value="*{to}" required />
 		</div>
 		<div class="form-group">
 			<label for="subject">件名</label>
-			<input type="text" id="subject" name="subject" readonly th:value="${subject}" required />
+			<input type="text" id="subject" name="subject" readonly th:value="*{subject}" required />
 		</div>
 		<label for="body">本文</label>
-		<textarea id="body" name="body" readonly th:text="${body}" required></textarea>
+		<textarea id="body" name="body" readonly th:text="*{body}" required></textarea>
 		<input type="submit" value="最終送信">
 	</form>
 </body>
