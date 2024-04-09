@@ -8,11 +8,11 @@ document.getElementById("emailForm").addEventListener("submit", function(event) 
 
 function validateForm() {
 	// メール取得
-	var to = document.getElementById("to").value;
+	let to = document.getElementById("to").value;
 	// タイトル取得
-	var subject = document.getElementById("subject").value;
+	let subject = document.getElementById("subject").value;
 	// 本文取得
-	var body = document.getElementById("body").value;
+	let body = document.getElementById("body").value;
 
 	// メール空白チェック
 	if (to === "") {
