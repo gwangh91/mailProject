@@ -12,23 +12,23 @@ import com.genest.app.util.Constants;
 public class MailController {
 
 	private MailService mailService;
-	
+
 	public MailController(MailService mailService) {
 		this.mailService = mailService;
 	}
-	
+
 	@GetMapping("/mailForm")
 	public String showMailForm() {
 		return Constants.MAIL_FORM_VIEW;
 	}
-	
+
 	@PostMapping("/confirmMailForm")
 	public String confrimMailForm(String to, String subject, String body, Model model) {
-		
+
 		model.addAttribute("to", to);
 		model.addAttribute("subject", subject);
 		model.addAttribute("body", body);
-		
+
 		return Constants.CONFIRM_MAIL_FORM_VIEW;
 	}
 

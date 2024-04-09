@@ -12,7 +12,7 @@ public class MailApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MailApplication.class, args);
 	}
-	
+
 	@GetMapping("/")
 	public String showMailForm() {
 		return "mailForm";

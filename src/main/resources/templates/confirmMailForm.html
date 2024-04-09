@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Confirm Email Form</title>
+	<meta charset="UTF-8">
+	<title>Confirm Email Form</title>
 	<link rel="stylesheet" type="text/css" href="/css/mailFormStyles.css">
 </head>
+
 <body>
-    <form method="post" action="/sendMail">
+	<form method="post" action="/sendMail">
 		<div class="form-group">
-            <label for="to">To</label>
-            <input type="email" id="to" name="to" readonly th:value="${to}" required/>
-        </div>
+			<label for="to">To</label>
+			<input type="email" id="to" name="to" readonly th:value="${to}" required />
+		</div>
 		<div class="form-group">
-            <label for="subject">件名</label>
-            <input type="text" id="subject" name="subject" readonly th:value="${subject}" required/>
-        </div>
-        <label for="body">本文</label>
-        <textarea id="body" name="body" readonly th:text="${body}" required></textarea>
+			<label for="subject">件名</label>
+			<input type="text" id="subject" name="subject" readonly th:value="${subject}" required />
+		</div>
+		<label for="body">本文</label>
+		<textarea id="body" name="body" readonly th:text="${body}" required></textarea>
 		<input type="submit" value="最終送信">
-    </form>
+	</form>
 </body>
+
 </html>
