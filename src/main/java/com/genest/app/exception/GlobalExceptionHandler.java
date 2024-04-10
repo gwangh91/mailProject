@@ -11,7 +11,9 @@ public class GlobalExceptionHandler implements ErrorController {
 
 	@GetMapping(Constants.ERROR_PATH)
 	public String handleError(Model model) {
+
 		model.addAttribute("message", Constants.ERROR_MESSAGE);
+		// エラーページへ遷移
 		return Constants.ERROR_VIEW;
 	}
 
