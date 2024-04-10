@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Mail Error</title>
+	<link rel="stylesheet" type="text/css" href="/css/mailFormStyles.css">
+	<script src="/js/mailErrorScript.js" defer></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="message">
+			<p th:text="${message}"></p>
+			<button onclick="goToMailFormPage()">メール送信ページへ</button>
+		</div>
+	</div>
+</body>
+
+</html>
