@@ -36,7 +36,6 @@ public class MailController {
 
 	@PostMapping("/confirmMailForm")
 	public String confrimMailForm(@ModelAttribute MailDTO mailDTO, Model model) {
-
 		model.addAttribute("mailDTO", mailDTO);
 		// メール送信確認ページへ遷移
 		return Constants.CONFIRM_MAIL_FORM_VIEW;
