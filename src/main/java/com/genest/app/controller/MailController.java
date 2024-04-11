@@ -35,7 +35,6 @@ public class MailController {
 
 	@PostMapping("/confirmMailForm")
 	public String confrimMailForm(@ModelAttribute MailDTO mailDTO, Model model) {
-
 		model.addAttribute("mailDTO", mailDTO);
 		// メール送信確認ページへ遷移
 		return Constants.CONFIRM_MAIL_FORM_VIEW;
@@ -43,10 +42,16 @@ public class MailController {
 
 	@PostMapping("/sendMail")
 	public String sendMail(@ModelAttribute @Valid MailDTO mailDTO, Model model) {
-		mailService.sendEmail(mailDTO);
-		model.addAttribute("message", Constants.SUCCESS_MAIL_MESSAGE);
-		// メール送信完了ページへ遷移
-		return Constants.MAIL_RESULT_VIEW;
+		try {
+			mailService.sendEmail(mailDTO);
+			model.addAttribute("message", Constants.SUCCESS_MAIL_MESSAGE);
+			// メール送信完了ページへ遷移
+			return Constants.MAIL_RESULT_VIEW;
+		} catch (Exception e) {
+			model.addAttribute("message", Constants.ERROR_MAIL_MESSAGE);
+			// メール送信に失敗すると、エラーページに遷移
+			return Constants.MAIL_ERROR_VIEW;
+		}
 	}
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
