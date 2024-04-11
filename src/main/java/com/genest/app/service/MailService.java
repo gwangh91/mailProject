@@ -22,7 +22,7 @@ public class MailService {
 		this.sentMailRepository = sentMailRepository;
 	}
 
-	public void sendEmail(MailDTO mailDTO) {
+	public void sendEmail(MailDTO mailDTO) throws MessagingException {
 		MimeMessage message = javaMailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
 
@@ -41,7 +41,7 @@ public class MailService {
 			sentMailRepository.save(sentMail);
 
 		} catch (MessagingException e) {
-			e.printStackTrace();
+			throw new MessagingException("メールの送信に失敗しました。", e);
 		}
 	}
 }
