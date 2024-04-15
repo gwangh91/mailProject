@@ -28,12 +28,12 @@ public class MailController {
 		this.mailService = mailService;
 	}
 
-	@GetMapping("/mailForm")
+	@GetMapping("/mail-form")
 	public String showMailForm() {
 		return Constants.MAIL_FORM_VIEW;
 	}
 
-	@PostMapping("/confirmMailForm")
+	@PostMapping("/mail-confirm-form")
 	public String confrimMailForm(@ModelAttribute MailDTO mailDTO, Model model) {
 
 		model.addAttribute("mailDTO", mailDTO);
@@ -41,7 +41,7 @@ public class MailController {
 		return Constants.CONFIRM_MAIL_FORM_VIEW;
 	}
 
-	@PostMapping("/sendMail")
+	@PostMapping("/mail-send")
 	public String sendMail(@ModelAttribute @Valid MailDTO mailDTO, Model model) {
 		mailService.sendEmail(mailDTO);
 		model.addAttribute("message", Constants.SUCCESS_MAIL_MESSAGE);

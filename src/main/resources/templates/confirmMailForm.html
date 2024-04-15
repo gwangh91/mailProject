@@ -8,7 +8,7 @@
 </head>
 
 <body>
-	<form method="post" action="/sendMail" th:object="${mailDTO}">
+	<form method="post" action="/mail-send" th:object="${mailDTO}">
 		<div class="form-group">
 			<label for="to">To</label>
 			<input type="email" id="to" name="to" readonly th:value="*{to}" required />

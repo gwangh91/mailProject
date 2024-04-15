@@ -1,6 +1,6 @@
 // mailResultScript.js
 
-// mailFormページに画面転移
+// mail-formページに画面転移
 function goToMailFormPage() {
-	window.location.href = "/mailForm";
+	window.location.href = "/mail-form";
 }
