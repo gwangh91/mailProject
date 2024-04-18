@@ -4,6 +4,9 @@
 <head>
 	<title>Join Popup</title>
 	<script src="/js/joinPopupScript.js" defer></script>
+	<script th:inline="javascript">
+		var message = /*[[@{${message}}]]*/ '';
+	</script>
 </head>
 
 <body>

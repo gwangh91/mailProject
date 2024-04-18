@@ -19,20 +19,17 @@ public class JoinService {
 	}
 
 	public void joinProcess(JoinDTO joinDTO) {
-		String email = joinDTO.getEmail();
-		String password = joinDTO.getPassword();
+		try {
+			String email = joinDTO.getEmail();
+			String password = joinDTO.getPassword();
 
-		Boolean isExist = userRepository.existsByEmail(email);
+			UserJoin userJoin = new UserJoin();
+			userJoin.setEmail(email);
+			userJoin.setPassword(bCryptPasswordEncoder.encode(password));
 
-		if (isExist) {
-			return;
+			userRepository.save(userJoin);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
-		UserJoin userJoin = new UserJoin();
-
-		userJoin.setEmail(email);
-		userJoin.setPassword(bCryptPasswordEncoder.encode(password));
-
-		userRepository.save(userJoin);
 	}
 }

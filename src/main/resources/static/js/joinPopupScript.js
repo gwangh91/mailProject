@@ -1,9 +1,9 @@
 // joinPopupScript.js
 
 window.onload = function() {
-	var popupContent = '<h2>ユーザー登録完了しました！</h2>';
+	let popupContent = '<h2>' + message + '</h2>';
 
-	var popup = window.open('', 'JoinPopup', 'width=400,height=200');
+	let popup = window.open('', 'JoinPopup', 'width=400,height=200');
 
 	if (popup && !popup.closed) {
 		popup.document.write(popupContent);
