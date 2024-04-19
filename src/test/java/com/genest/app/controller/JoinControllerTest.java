@@ -45,11 +45,19 @@ public class JoinControllerTest {
 		mockMvc = MockMvcBuilders.standaloneSetup(joinController).build();
 	}
 
+	/**
+	 * showJoinFormメソッド動作を検証するテストケース
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void testshowJoinForm() throws Exception {
 		mockMvc.perform(get("/join-form")).andExpect(status().isOk()).andExpect(view().name(Constants.JOIN_FORM_VIEW));
 	}
 
+	/**
+	 * joinProcessメソッドが正常に処理される場合の動作を検証するテストケース
+	 */
 	@Test
 	public void testJoinProcessSuccess() {
 		// Setup
@@ -65,6 +73,9 @@ public class JoinControllerTest {
 		assertEquals(Constants.JOIN_POPUP_VIEW, viewName);
 	}
 
+	/**
+	 * joinProcessメソッドが失敗した場合の動作を検証するテストケース
+	 */
 	@Test
 	public void testJoinProcessFailure() {
 		// Setup
@@ -80,6 +91,9 @@ public class JoinControllerTest {
 		assertEquals(Constants.JOIN_POPUP_VIEW, viewName);
 	}
 
+	/**
+	 * bin フィールドで有効性例外を処理するテストケース
+	 */
 	@Test
 	public void testHandleValidationExceptionWithBlank() {
 		JoinController testJoinController = new JoinController(joinService);
@@ -106,6 +120,9 @@ public class JoinControllerTest {
 		assertEquals(400, responseEntity.getStatusCode().value());
 	}
 
+	/**
+	 * 有効性例外を処理するテストケース
+	 */
 	@Test
 	public void testHandleValidationException() {
 		JoinController testJoinController = new JoinController(joinService);

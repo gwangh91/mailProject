@@ -24,6 +24,11 @@ public class LoginControllerTest {
 		mockMvc = MockMvcBuilders.standaloneSetup(new LoginController()).build();
 	}
 
+	/**
+	 * showLoginFormメソッド動作を検証するテストケース
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void testShowLoginForm() throws Exception {
 		mockMvc.perform(get("/login-form")).andExpect(status().isOk())

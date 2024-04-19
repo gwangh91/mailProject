@@ -3,16 +3,10 @@ package com.genest.app.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.validation.Valid;
-
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.genest.app.dto.JoinDTO;
 import com.genest.app.repository.UserRepository;
 import com.genest.app.util.Constants;
 
@@ -26,7 +20,7 @@ public class RegistrationController {
 	}
 
 	@GetMapping("/join-check-email")
-	public Map<String, Boolean> checkMemberId(@RequestParam("email") String email) {
+	public Map<String, Boolean> checkEmail(@RequestParam("email") String email) {
 		Map<String, Boolean> response = new HashMap<>();
 
 		// メール形式チェック
