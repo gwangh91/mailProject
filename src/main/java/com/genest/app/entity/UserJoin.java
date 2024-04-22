@@ -8,6 +8,15 @@ import jakarta.persistence.Id;
 @Entity
 public class UserJoin {
 
+	public UserJoin() {
+
+	}
+
+	public UserJoin(String email, String password) {
+		this.email = email;
+		this.password = password;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -15,6 +24,8 @@ public class UserJoin {
 	private String email;
 
 	private String password;
+
+	private String role;
 
 	public Long getId() {
 		return id;
@@ -38,6 +49,14 @@ public class UserJoin {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 }
