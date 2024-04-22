@@ -26,6 +26,7 @@ public class JoinService {
 			UserJoin userJoin = new UserJoin();
 			userJoin.setEmail(email);
 			userJoin.setPassword(bCryptPasswordEncoder.encode(password));
+			userJoin.setRole("ROLE_USER");
 
 			userRepository.save(userJoin);
 		} catch (Exception e) {

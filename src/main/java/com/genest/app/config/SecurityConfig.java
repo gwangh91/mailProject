@@ -11,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.genest.app.jwt.JWTFilter;
+import com.genest.app.jwt.JWTUtil;
 import com.genest.app.jwt.LoginFilter;
 
 @Configuration
@@ -20,8 +22,12 @@ public class SecurityConfig {
 	// AuthenticationManagerが因子として受け取るAuthenticationConfiguraionオブジェクト作成者注入
 	private final AuthenticationConfiguration authenticationConfiguration;
 
-	public SecurityConfig(AuthenticationConfiguration authenticationConfiguration) {
+	// JWTUtil注入
+	private final JWTUtil jWTUtil;
+
+	public SecurityConfig(AuthenticationConfiguration authenticationConfiguration, JWTUtil jWTUtil) {
 		this.authenticationConfiguration = authenticationConfiguration;
+		this.jWTUtil = jWTUtil;
 	}
 
 	// AuthenticationManager Bean 登録
@@ -49,7 +55,18 @@ public class SecurityConfig {
 		// http basic認証方式disable
 		http.httpBasic((auth) -> auth.disable());
 
-		http.addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration)),
+		// 経路別の認可作業
+		http.authorizeHttpRequests((auth) -> auth
+				.requestMatchers("/", "loging", "/login-form", "/join-form", "/confirmMailForm", "/sendMail",
+						"/join-registration", "/join-check-email", "css/loginFormStyles.css", "images/Logo.png",
+						"js/joinFormScript.js", "js/joinPopupScript.js", "css/mailFormStyles.css",
+						"js/mailFormScript.js", "js/mailResultScript.js")
+				.permitAll().requestMatchers("/mailForm").hasRole("USER").anyRequest().authenticated());
+
+		http.addFilterBefore(new JWTFilter(jWTUtil), LoginFilter.class);
+
+		// AuthenticationManager()、JWTUtilの伝達
+		http.addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), jWTUtil),
 				UsernamePasswordAuthenticationFilter.class);
 
 		// セッション設定
