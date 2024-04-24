@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title> login - genestinc.com</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/css/loginFormStyles.css">
+</head>
+
+<body>
+	<div class="container bootstrap snippets bootdey">
+		<div class="row login-page">
+			<div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
+				<a href="/login-form">
+					<img src="/images/Logo.png" class="user-avatar img-thumbnail">
+				</a>
+				<h1>GENEST</h1>
+				<form role="form" class="ng-pristine ng-valid" action="/loging" method="post">
+					<div class="form-content">
+						<div class="form-group">
+							<input type="email" id="email" name="email" class="form-control input-underline input-lg" placeholder="メール">
+						</div>
+						<div class="form-group">
+							<input type="password" id="password" name="password" class="form-control input-underline input-lg" placeholder="パスワード">
+						</div>
+						<div id="error-message" style="color: red;"></div>
+					</div>
+					<button type="submit" class="btn btn-info btn-lg">
+						ログイン
+					</button> &nbsp;
+					<a href="/join-form" class="btn btn-info btn-lg">登録</a>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="/js/loginFormScript.js"></script>
+</body>
+
+</html>

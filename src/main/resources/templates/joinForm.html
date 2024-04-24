@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title> join - genestinc.com</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/css/loginFormStyles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/js/joinFormScript.js"></script>
+</head>
+
+<body>
+	<div class="container bootstrap snippets bootdey">
+		<div class="row login-page">
+			<div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
+				<a href="/login-form">
+					<img src="/images/Logo.png" class="user-avatar img-thumbnail">
+				</a>
+				<h1>GENEST</h1>
+				<form id="registrationForm" role="form" class="ng-pristine ng-valid" method="POST" action="/join-registration">
+					<div class="form-content">
+						<div class="form-group">
+							<label for="email">メールアドレス</label>
+							<input class="form-control" type="email" required="" id="email" name="email">
+							<span id="emailError" class="error"></span><br>
+						</div>
+						<div class="form-group">
+							<label for="password">パスワード</label>
+							<input class="form-control" type="password" required="" id="password" name="password">
+							<span id="passwordError" class="error"></span><br>
+						</div>
+						<div class="form-group">
+							<label for="confirmPassword">パスワード確認</label>
+							<input class="form-control" type="password" required="" id="confirmPassword"
+								name="confirmPassword">
+							<span id="confirmPasswordError" class="error"></span><br>
+						</div>
+					</div>
+					<div class="text-right">
+						<button id="submitBtn" class="btn btn-primary" type="submit" disabled>登録</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</body>
+
+</html>

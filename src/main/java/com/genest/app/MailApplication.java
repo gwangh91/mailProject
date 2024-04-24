@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.genest.app.util.Constants;
+
 @Controller
 @SpringBootApplication
 public class MailApplication {
@@ -14,7 +16,7 @@ public class MailApplication {
 	}
 
 	@GetMapping("/")
-	public String showMailForm() {
-		return "mailForm";
+	public String showLoginForm() {
+		return Constants.LOGIN_FORM_VIEW;
 	}
 }
