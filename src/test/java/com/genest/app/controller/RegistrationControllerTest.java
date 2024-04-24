@@ -18,6 +18,7 @@ public class RegistrationControllerTest {
 
 	@BeforeEach
 	public void setUp() {
+		// UserRepositoryのmockオブジェクトとRegistrationControllerオブジェクトを生成
 		userRepository = mock(UserRepository.class);
 		registrationController = new RegistrationController(userRepository);
 	}
@@ -28,10 +29,13 @@ public class RegistrationControllerTest {
 	@Test
 	public void testCheckEmail_ValidEmail() {
 		String validEmail = "test@example.com";
+		// UserRepositoryのexistsByEmailメソッドがfalseを返却するように設定
 		when(userRepository.existsByEmail(validEmail)).thenReturn(false);
 
+		// checkEmailメソッドを呼び出し、応答を取得
 		Map<String, Boolean> response = registrationController.checkEmail(validEmail);
 
+		// 応答が適切であることを確認
 		assertEquals(1, response.size());
 		assertEquals(false, response.get("exists"));
 	}
@@ -42,9 +46,10 @@ public class RegistrationControllerTest {
 	@Test
 	public void testCheckEmail_InvalidEmail() {
 		String invalidEmail = "invalidemail";
-
+		// checkEmailメソッドを呼び出し、応答を取得
 		Map<String, Boolean> response = registrationController.checkEmail(invalidEmail);
 
+		// 応答が適切であることを確認
 		assertEquals(1, response.size());
 		assertEquals(true, response.get("formatError"));
 	}
@@ -55,10 +60,13 @@ public class RegistrationControllerTest {
 	@Test
 	public void testCheckEmail_duplicate() {
 		String existingEmail = "test@gmail.com";
+		// UserRepositoryのexistsByEmailメソッドがtrueを返却するように設定
 		when(userRepository.existsByEmail(existingEmail)).thenReturn(true);
 
+		// checkEmailメソッドを呼び出し、応答を取得
 		Map<String, Boolean> response = registrationController.checkEmail(existingEmail);
 
+		// 応答が適切であることを確認
 		assertEquals(1, response.size());
 		assertEquals(true, response.get("exists"));
 	}
