@@ -18,10 +18,6 @@ public class CustomUserDetails implements UserDetails {
 		this.userJoin = userJoin;
 	}
 
-	public CustomUserDetails() {
-		this.userJoin = new UserJoin();
-	}
-
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 
