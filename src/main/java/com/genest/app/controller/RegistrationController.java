@@ -23,17 +23,24 @@ public class RegistrationController {
 	public Map<String, Boolean> checkEmail(@RequestParam("email") String email) {
 		Map<String, Boolean> response = new HashMap<>();
 
-		// メール形式チェック
-		if (!isValidEmail(email)) {
-			response.put("formatError", true);
+		try {
+			// メール形式チェック
+			if (!isValidEmail(email)) {
+				response.put("formatError", true);
+				return response;
+			}
+
+			// メール重複チェック
+			Boolean isExist = userRepository.existsByEmail(email);
+			response.put("exists", isExist);
+
+			return response;
+
+		} catch (Exception e) {
+			// 例外処理
+			response.put("error", true);
 			return response;
 		}
-
-		// メール重複チェック
-		Boolean isExist = userRepository.existsByEmail(email);
-		response.put("exists", isExist);
-
-		return response;
 	}
 
 	// メールの正規式をチェックするメソッド
