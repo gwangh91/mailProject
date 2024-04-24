@@ -56,12 +56,12 @@ public class SecurityConfig {
 		http.httpBasic((auth) -> auth.disable());
 
 		// 経路別の認可作業
-		http.authorizeHttpRequests((auth) -> auth
-				.requestMatchers("/", "loging", "/login-form", "/join-form", "/confirmMailForm", "/sendMail",
-						"/join-registration", "/join-check-email", "css/loginFormStyles.css", "images/Logo.png",
-						"js/joinFormScript.js", "js/joinPopupScript.js", "css/mailFormStyles.css",
-						"js/mailFormScript.js", "js/mailResultScript.js")
-				.permitAll().requestMatchers("/mailForm").hasRole("USER").anyRequest().authenticated());
+//		http.authorizeHttpRequests((auth) -> auth
+//				.requestMatchers("/", "loging", "/login-form", "/join-form", "/confirmMailForm", "/sendMail",
+//						"/join-registration", "/join-check-email", "css/loginFormStyles.css", "images/Logo.png",
+//						"js/loginFormScript.js", "js/joinFormScript.js", "js/joinPopupScript.js",
+//						"css/mailFormStyles.css", "js/mailFormScript.js", "js/mailResultScript.js")
+//				.permitAll().requestMatchers("/mailForm").hasRole("USER").anyRequest().authenticated());
 
 		http.addFilterBefore(new JWTFilter(jWTUtil), LoginFilter.class);
 
